@@ -12,7 +12,7 @@ test: all
 	py.test
 
 test-cov: all
-	py.test --cov=q2_plugin_name
+	python -m coverage run -m pytest && coverage xml -o coverage.xml
 
 install: all
 	$(PYTHON) setup.py install
