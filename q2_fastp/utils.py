@@ -35,6 +35,9 @@ def run_command(cmd, env=None, verbose=True, pipe=False, **kwargs):
 
 
 def add_param(cmd, param, value, flag=None):
-    if value is not None and value != "":
+    if isinstance(value, bool):
+        if value:
+            cmd.append(flag if flag else f"--{param}")
+    elif value is not None and value != "":
         cmd.append(flag if flag else f"--{param}")
         cmd.append(str(value))
