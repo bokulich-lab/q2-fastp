@@ -73,7 +73,7 @@ plugin.methods.register_function(
         "cut_tail": Bool,
         "cut_right": Bool,
         "cut_window_size": Int % Range(1, None),
-        "cut_mean_quality": Int % Range(0, None),
+        "cut_mean_quality": Int % Range(1, 36),
         "overrepresentation_analysis": Bool,
         "overrepresentation_sampling": Int % Range(0, 10000),
     },
