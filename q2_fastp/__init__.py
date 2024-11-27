@@ -7,6 +7,7 @@
 # ----------------------------------------------------------------------------
 from . import _version
 from .fastp import process_seqs
+from .visualization import visualize
 
 __version__ = _version.get_versions()["version"]
-__all__ = ["process_seqs"]
+__all__ = ["process_seqs", "visualize"]

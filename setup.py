@@ -22,7 +22,7 @@ setup(
     url="https://github.com/bokulich-lab/q2-fastp",
     entry_points={"qiime2.plugins": ["q2-fastp=q2_fastp.plugin_setup:plugin"]},
     package_data={
-        "q2_fastp": ["citations.bib"],
+        "q2_fastp": ["citations.bib", "assets/*"],
     },
     zip_safe=False,
 )
