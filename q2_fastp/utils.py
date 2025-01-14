@@ -5,7 +5,11 @@
 #
 # The full license is in the file LICENSE, distributed with this software.
 # ----------------------------------------------------------------------------
+import os
+import shutil
 import subprocess
+
+from q2_fastp.types import FastpJsonDirectoryFormat
 
 EXTERNAL_CMD_WARNING = (
     "Running external command line application(s). "
@@ -41,3 +45,12 @@ def add_param(cmd, param, value, flag=None):
     elif value is not None and value != "":
         cmd.append(flag if flag else f"--{param}")
         cmd.append(str(value))
+
+def collate_fastp_reports(
+        reports: FastpJsonDirectoryFormat
+) -> FastpJsonDirectoryFormat:
+    collated_reports = FastpJsonDirectoryFormat()
+    for report in reports:
+        for fp in report.path.iterdir():
+            shutil.move(str(fp), collated_reports.path / os.path.basename(fp))
+    return collated_reports

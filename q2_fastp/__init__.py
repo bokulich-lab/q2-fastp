@@ -7,7 +7,8 @@
 # ----------------------------------------------------------------------------
 from . import _version
 from .fastp import process_seqs
+from .utils import collate_fastp_reports
 from .visualization import visualize
 
 __version__ = _version.get_versions()["version"]
-__all__ = ["process_seqs", "visualize"]
+__all__ = ["collate_fastp_reports", "process_seqs", "visualize"]
