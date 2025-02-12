@@ -48,5 +48,6 @@ class TestUtils(TestPluginBase):
                     os.path.join(str(self.reports2.path), "sample4.json"),
                     obs.path / "sample4.json",
                 ),
-            ], any_order=True
+            ],
+            any_order=True,
         )
