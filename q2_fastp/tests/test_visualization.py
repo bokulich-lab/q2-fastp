@@ -6,20 +6,12 @@
 # The full license is in the file LICENSE, distributed with this software.
 # ----------------------------------------------------------------------------
 import os
-import shutil
 import unittest
-from unittest.mock import patch, call, MagicMock, ANY
+from unittest.mock import patch, MagicMock, ANY
 
-from q2_types.per_sample_sequences import CasavaOneEightSingleLanePerSampleDirFmt
 from qiime2.plugin.testing import TestPluginBase
 
 from q2_fastp import visualize
-from q2_fastp.fastp import (
-    _find_empty_samples,
-    _remove_samples,
-    _run_fastp,
-    process_seqs,
-)
 from q2_fastp.types import FastpJsonDirectoryFormat
 from q2_fastp.visualization import TEMPLATES
 
