@@ -63,7 +63,7 @@ jobs:
           channels: conda-forge,defaults
           channel-priority: true
           activate-environment: conda-env
-          condarc-file: utilities/conda-recipe/condarc
+          condarc-file: utilities/ci/condarc
           # use-only-tar-bz2: true
 
       - name: Get date
