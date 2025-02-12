@@ -27,7 +27,7 @@ def get_keywords() -> Dict[str, str]:
     # get_keywords().
     git_refnames = "$Format:%d$"
     git_full = "$Format:%H$"
-    git_date = "$Format:%ci$"
+    git_date = "$Format:%conda-recipe$"
     keywords = {"refnames": git_refnames, "full": git_full, "date": git_date}
     return keywords
 
@@ -208,7 +208,7 @@ def git_versions_from_keywords(
         date = date.splitlines()[-1]
 
         # git-2.2.0 added "%cI", which expands to an ISO-8601 -compliant
-        # datestamp. However we prefer "%ci" (which expands to an "ISO-8601
+        # datestamp. However we prefer "%conda-recipe" (which expands to an "ISO-8601
         # -like" string, which we must then edit to make compliant), because
         # it's been around since git-1.5.3, and it's too difficult to
         # discover which version we're using, or to work around using an
@@ -401,7 +401,7 @@ def git_pieces_from_vcs(
         pieces["distance"] = len(out.split())  # total number of commits
 
     # commit date: see ISO-8601 comment in git_versions_from_keywords()
-    date = runner(GITS, ["show", "-s", "--format=%ci", "HEAD"], cwd=root)[0].strip()
+    date = runner(GITS, ["show", "-s", "--format=%conda-recipe", "HEAD"], cwd=root)[0].strip()
     # Use only the last line.  Previous lines may contain GPG signature
     # information.
     date = date.splitlines()[-1]
