@@ -43,7 +43,9 @@ class TestUtils(TestPluginBase):
         cmd = ["echo", "hello"]
         result = run_command(cmd, pipe=True, verbose=False)
 
-        mock_subprocess_run.assert_called_once_with(cmd, env=None, check=True, capture_output=True, text=True)
+        mock_subprocess_run.assert_called_once_with(
+            cmd, env=None, check=True, capture_output=True, text=True
+        )
         self.assertEqual(result.stdout, "mock output")
 
     @patch("q2_fastp.utils.shutil.move")

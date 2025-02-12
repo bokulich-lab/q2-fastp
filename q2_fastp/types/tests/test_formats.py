@@ -16,13 +16,11 @@ class TestFormats(TestPluginBase):
     package = "q2_fastp.tests"
 
     def test_fastp_json_format(self):
-        FastpJsonDirectoryFormat(
-            self.get_data_path("reports/set1"), "r"
-        ).validate()
+        FastpJsonDirectoryFormat(self.get_data_path("reports/set1"), "r").validate()
 
     def test_fastp_json_format_corrupted(self):
         with self.assertRaisesRegex(
-                ValidationError, "JSON file is not formatted correctly"
+            ValidationError, "JSON file is not formatted correctly"
         ):
             FastpJsonDirectoryFormat(
                 self.get_data_path("reports/set3-broken"), "r"
