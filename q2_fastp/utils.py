@@ -46,8 +46,9 @@ def add_param(cmd, param, value, flag=None):
         cmd.append(flag if flag else f"--{param}")
         cmd.append(str(value))
 
+
 def collate_fastp_reports(
-        reports: FastpJsonDirectoryFormat
+    reports: FastpJsonDirectoryFormat,
 ) -> FastpJsonDirectoryFormat:
     collated_reports = FastpJsonDirectoryFormat()
     for report in reports:

@@ -26,19 +26,27 @@ class TestUtils(TestPluginBase):
             self.get_data_path("reports/set2"), "r"
         )
 
-    @patch('q2_fastp.utils.shutil.move')
+    @patch("q2_fastp.utils.shutil.move")
     def test_collate(self, p):
-        obs = collate_fastp_reports(
-            reports=[self.reports1, self.reports2]
-        )
+        obs = collate_fastp_reports(reports=[self.reports1, self.reports2])
         self.assertIsInstance(obs, FastpJsonDirectoryFormat)
-        p.assert_has_calls([
-            call(os.path.join(str(self.reports1.path), 'sample1.json'),
-                 obs.path / 'sample1.json'),
-            call(os.path.join(str(self.reports1.path), 'sample2.json'),
-                 obs.path / 'sample2.json'),
-            call(os.path.join(str(self.reports2.path), 'sample3.json'),
-                 obs.path / 'sample3.json'),
-            call(os.path.join(str(self.reports2.path), 'sample4.json'),
-                 obs.path / 'sample4.json'),
-        ])
+        p.assert_has_calls(
+            [
+                call(
+                    os.path.join(str(self.reports1.path), "sample1.json"),
+                    obs.path / "sample1.json",
+                ),
+                call(
+                    os.path.join(str(self.reports1.path), "sample2.json"),
+                    obs.path / "sample2.json",
+                ),
+                call(
+                    os.path.join(str(self.reports2.path), "sample3.json"),
+                    obs.path / "sample3.json",
+                ),
+                call(
+                    os.path.join(str(self.reports2.path), "sample4.json"),
+                    obs.path / "sample4.json",
+                ),
+            ]
+        )

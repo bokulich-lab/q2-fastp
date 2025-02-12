@@ -166,7 +166,9 @@ plugin.methods.register_function(
     function=collate_fastp_reports,
     inputs={"reports": List[FastpJSONReports]},
     parameters={},
-    outputs={"collated_reports": FastpJSONReports,},
+    outputs={
+        "collated_reports": FastpJSONReports,
+    },
     name="Collate Fastp reports",
     description="Collates Fastp reports into a single artifact.",
 )
