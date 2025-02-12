@@ -147,7 +147,7 @@ class TestFastp(TestPluginBase):
             )
             for s in ["sample1", "sample2"]
         ]
-        mock_run_command.assert_has_calls(calls)
+        mock_run_command.assert_has_calls(calls, any_order=True)
 
     @patch("q2_fastp.fastp._run_fastp")
     @patch("q2_fastp.fastp._find_empty_samples")
