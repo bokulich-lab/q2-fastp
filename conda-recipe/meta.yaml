@@ -3,7 +3,7 @@ package:
   version: {{ PLUGIN_VERSION }}
 
 source:
-  path: ../..
+  path: ..
 
 build:
   script: make install
@@ -16,6 +16,7 @@ requirements:
     - wheel
 
   build:
+    - python {{ python }}
     - setuptools
     - versioningit
 
