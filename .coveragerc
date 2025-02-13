@@ -6,7 +6,6 @@ omit =
     **/__init__.py
     **/_version.py
     versioneer.py
-    **/_examples.py
 
 [report]
 fail_under = 90

@@ -1,12 +1,9 @@
-{% set data = load_setup_py_data() %}
-{% set version = data.get('version') or 'placehold' %}
-
 package:
   name: q2-fastp
-  version: {{ version }}
+  version: {{ PLUGIN_VERSION }}
 
 source:
-  path: ../..
+  path: ..
 
 build:
   script: make install
@@ -15,6 +12,13 @@ requirements:
   host:
     - python {{ python }}
     - setuptools
+    - versioningit
+    - wheel
+
+  build:
+    - python {{ python }}
+    - setuptools
+    - versioningit
 
   run:
     - fastp
@@ -26,12 +30,11 @@ requirements:
 test:
   requires:
     - coverage
-    - parameterized
   imports:
     - q2_fastp
     - qiime2.plugins.fastp
   commands:
-    - coverage run --rcfile ./repo/.coveragerc -m pytest && coverage xml -o coverage.xml
+    - pytest --pyargs q2_fastp
 
 about:
   home: https://github.com/bokulich-lab/q2-fastp

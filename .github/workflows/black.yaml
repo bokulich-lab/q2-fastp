@@ -1,0 +1,17 @@
+name: Black
+
+on:
+  pull_request:
+    branches: ["main"]
+  push:
+    branches: ["main"]
+
+jobs:
+  black:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: psf/black@stable
+        with:
+          version: "24.10.0"
+          options: ". --check --extend-exclude '.*_version\\.py$' --verbose"
