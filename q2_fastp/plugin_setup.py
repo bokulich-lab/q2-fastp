@@ -144,7 +144,7 @@ plugin.methods.register_function(
         "reports": "Fastp JSON reports.",
     },
     name="Process sequences with fastp.",
-    description="This method uses fastp to process input sequences with various "
+    description="Uses fastp to process input sequences with various "
     "quality control options.",
     citations=[citations["chen2023fastp"]],
 )
@@ -169,8 +169,8 @@ plugin.methods.register_function(
     outputs={
         "collated_reports": FastpJSONReports,
     },
-    name="Collate Fastp reports",
-    description="Collates Fastp reports into a single artifact.",
+    name="Collate fastp reports.",
+    description="Collate fastp reports into a single artifact.",
 )
 
 plugin.register_formats(
