@@ -1,4 +1,4 @@
-name: Dependent Issues
+name: Dependent issues
 
 on:
   issues:
@@ -33,9 +33,11 @@ jobs:
           # (Optional) Enable checking for dependencies in issues.
           # Enable by setting the value to "on". Default "off"
           check_issues: off
+
           ignore_dependabot: off
+
           keywords: depends on, blocked by, merge after
+
           comment: >
             This PR/issue depends on:
-
             {{ dependencies }}

@@ -1,4 +1,4 @@
-name: CI
+name: QIIME 2 CI
 on:
   pull_request:
     branches: ["main"]
@@ -6,7 +6,7 @@ on:
     branches: ["main"]
 
 jobs:
-  ci:
+  qiime-ci:
     uses: qiime2/distributions/.github/workflows/lib-ci-dev.yaml@dev
     with:
       distro: moshpit
