@@ -1,4 +1,4 @@
-.PHONY: all lint test test-cov install dev prep-dev-container clean distclean
+.PHONY: all lint test test-cov test-docker install dev clean distclean
 
 PYTHON ?= python
 
@@ -12,7 +12,11 @@ test: all
 	py.test
 
 test-cov: all
-	python -m coverage run -m pytest && coverage xml -o coverage.xml
+	python -m pytest --cov=q2_fastp -n 4 && coverage xml -o coverage.xml
+
+test-docker: all
+	qiime info
+	qiime fastp --help
 
 install: all
 	$(PYTHON) -m pip install -v .
@@ -21,12 +25,6 @@ dev: all
 	pip install pre-commit
 	pip install -e .
 	pre-commit install
-
-prep-dev-container: all
-	conda install mamba -qy -n base -c conda-forge
-	mamba install -p /opt/conda/envs/qiime2-$(QIIME_VERSION) -qy -c conda-forge -c bioconda -c defaults --file requirements.txt flake8 coverage wget pytest-xdist autopep8
-	/opt/conda/envs/qiime2-$(QIIME_VERSION)/bin/pip install -q https://github.com/qiime2/q2lint/archive/master.zip
-	/opt/conda/envs/qiime2-$(QIIME_VERSION)/bin/pip install -e .
 
 clean: distclean
 
