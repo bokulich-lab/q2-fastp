@@ -9,13 +9,15 @@ import os
 import shutil
 import tempfile
 
-import pkg_resources
 import q2templates
 
 from q2_fastp.types import FastpJsonDirectoryFormat
 from q2_fastp.utils import run_command
 
-TEMPLATES = os.path.join(os.path.dirname(__file__), "assets",)
+TEMPLATES = os.path.join(
+    os.path.dirname(__file__),
+    "assets",
+)
 
 
 def visualize(output_dir: str, reports: FastpJsonDirectoryFormat) -> None:
