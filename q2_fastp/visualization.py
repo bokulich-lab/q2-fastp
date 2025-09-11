@@ -15,7 +15,7 @@ import q2templates
 from q2_fastp.types import FastpJsonDirectoryFormat
 from q2_fastp.utils import run_command
 
-TEMPLATES = pkg_resources.resource_filename("q2_fastp", "assets")
+TEMPLATES = os.path.join(os.path.dirname(__file__), "assets",)
 
 
 def visualize(output_dir: str, reports: FastpJsonDirectoryFormat) -> None:
