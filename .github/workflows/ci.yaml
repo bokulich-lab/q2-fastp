@@ -5,10 +5,13 @@ on:
   push:
     branches: ["main"]
     tags: ["*"]
+  release:
+    types: [published]
 
 jobs:
   ci:
     uses: bokulich-lab/utilities/.github/workflows/ci.yaml@main
+    secrets: inherit
     with:
       distro: moshpit
       build_docker: true
