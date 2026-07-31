@@ -11,9 +11,9 @@ from q2_types.per_sample_sequences import (
 )
 from q2_types.sample_data import SampleData
 from qiime2.core.type import Bool, Int, Range, Str, TypeMap
-from qiime2.plugin import Citations, Plugin, List
+from qiime2.plugin import Citations, List, Plugin
 
-from q2_fastp import __version__, visualize, collate_fastp_reports
+from q2_fastp import __version__, collate_fastp_reports, visualize
 from q2_fastp.fastp import process_seqs
 from q2_fastp.types import FastpJsonDirectoryFormat, FastpJsonFormat, FastpJSONReports
 
@@ -76,6 +76,7 @@ plugin.methods.register_function(
         "cut_mean_quality": Int % Range(1, 36),
         "overrepresentation_analysis": Bool,
         "overrepresentation_sampling": Int % Range(0, 10000),
+        "detect_adapter_for_pe": Bool,
     },
     outputs=[
         ("processed_sequences", I_fastp_out),
@@ -138,6 +139,7 @@ plugin.methods.register_function(
         "overrepresentation_sampling": (
             "The sampling number for overrepresentation analysis. Smaller is slower."
         ),
+        "detect_adapter_for_pe": "Enable auto adapter detection of PE reads.",
     },
     output_descriptions={
         "processed_sequences": "Sequences processed by fastp.",
