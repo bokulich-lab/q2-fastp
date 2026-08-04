@@ -164,6 +164,7 @@ def process_seqs(
     cut_right: bool = False,
     overrepresentation_analysis: bool = False,
     overrepresentation_sampling: int = 20,
+    detect_adapter_for_pe: bool = False,
 ) -> (CasavaOneEightSingleLanePerSampleDirFmt, FastpJsonDirectoryFormat):
     kwargs = {
         k: v

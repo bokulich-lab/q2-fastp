@@ -8,7 +8,7 @@
 import os
 import shutil
 import unittest
-from unittest.mock import patch, call, MagicMock, ANY
+from unittest.mock import ANY, MagicMock, call, patch
 
 from q2_types.per_sample_sequences import CasavaOneEightSingleLanePerSampleDirFmt
 from qiime2.plugin.testing import TestPluginBase
@@ -92,6 +92,7 @@ class TestFastp(TestPluginBase):
             "qualified_quality_phred": 15,
             "unqualified_percent_limit": 40,
             "thread": 1,
+            "detect_adapter_for_pe": True,
         }
 
         obs_seqs, obs_reports = _run_fastp(self.reads_paired, params)
@@ -131,6 +132,7 @@ class TestFastp(TestPluginBase):
                     "40",
                     "--thread",
                     "1",
+                    "--detect_adapter_for_pe",
                     "--in2",
                     os.path.join(
                         self.reads_paired.path, f"{s}_00_L001_R2_001.fastq.gz"
